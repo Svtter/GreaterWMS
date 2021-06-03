@@ -50,7 +50,7 @@ randombinproperty = ["Normal", "Holding", "Damage", "Inspection"]
 randombinsize = ["Big", "Floor", "Tiny", "Small"]
 
 @method_decorator(csrf_exempt, name='dispatch')
-def register(request, *args, **kwargs):
+def register(request):
     post_data = json.loads(request.body.decode())
     data = {
         "name": post_data.get('name'),

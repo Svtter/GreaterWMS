@@ -43,6 +43,7 @@ export default {
     update: '马上更新'
   },
   menuItem: {
+    dashboard: '报表中心',
     inbound: '收货管理',
     outbound: '发货管理',
     stock: '库存管理',

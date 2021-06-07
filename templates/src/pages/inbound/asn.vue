@@ -968,12 +968,14 @@
      </q-dialog>
       <q-dialog v-model="viewForm">
        <q-card id="printMe">
-         <q-bar class="bg-light-blue-10 text-white rounded-borders" style="height: 50px">
+         <q-bar class="bg-light-blue-10 text-white rounded-borders" style="height: 50px;justify-content:space-around;">
            <div>{{ viewAsn }}</div>
-           <q-space />
+           <div>
+             <vue-qr  :text="qrCode" style="margin-top:23vh;" :size="180"></vue-qr>
+           </div>
          </q-bar>
          <q-card-section>
-           <div class="text-h6">Sender: {{ supplier_detail.supplier_name }}</div>
+           <div class="text-h6">Sender: {{ supplier_detail.supplier_name }} </div>
            <div class="text-subtitle2">Address: {{ supplier_detail.supplier_city }}{{ supplier_detail.supplier_address }}</div>
            <div class="text-subtitle2">Tel: {{ supplier_detail.supplier_contact }}</div>
            <div class="text-h6">Receiver: {{ warehouse_detail.warehouse_name }}</div>
@@ -1071,6 +1073,7 @@ export default {
       height: '',
       table_list: [],
       viewprint_table: [],
+      qrCode: '',
       warehouse_detail: {},
       supplier_list: [],
       supplier_detail: {},
@@ -1746,6 +1749,7 @@ export default {
         _this.supplier_detail = res.supplier_detail
         _this.viewAsn = e.asn_code
         _this.viewForm = true
+        _this.qrCode = e.bar_code
       })
     },
     downloadlistData () {

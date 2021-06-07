@@ -43,6 +43,7 @@ export default {
     update: '馬上更新'
   },
   menuItem: {
+    dashboard: '報表中心',
     inbound: '收貨管理',
     outbound: '發貨管理',
     stock: '庫存管理',
@@ -326,7 +327,7 @@ export default {
       bin_property: '庫位屬性'
     }
   },
-scan: {
+  scan: {
     scan: '掃描',
     scan_asn: 'ASN查詢',
     scan_dn: 'DN查詢',

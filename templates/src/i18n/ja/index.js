@@ -43,6 +43,7 @@ export default {
     update: '今すぐ写新'
   },
   menuItem: {
+    dashboard: 'レポートセンター',
     inbound: '入庫管理',
     outbound: '配送管理',
     stock: '在庫管理',

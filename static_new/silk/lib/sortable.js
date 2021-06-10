@@ -289,7 +289,7 @@ const sorttable = {
     return 1;
   },
   sort_mmdd: function(a,b) {
-    mtch = a[0].match(sorttable.DATE_RE);
+    let mtch = a[0].match(sorttable.DATE_RE);
     let y = mtch[3]; let d = mtch[2]; let m = mtch[1];
     if (m.length == 1) m = '0'+m;
     if (d.length == 1) d = '0'+d;

@@ -129,9 +129,9 @@ const sorttable = {
               cell.className = cell.className.replace('sorttable_sorted','');
             }
           });
-          sortfwdind = document.getElementById('sorttable_sortfwdind');
+          let sortfwdind = document.getElementById('sorttable_sortfwdind');
           if (sortfwdind) { sortfwdind.parentNode.removeChild(sortfwdind); }
-          sortrevind = document.getElementById('sorttable_sortrevind');
+          let sortrevind = document.getElementById('sorttable_sortrevind');
           if (sortrevind) { sortrevind.parentNode.removeChild(sortrevind); }
 
           this.className += ' sorttable_sorted';
@@ -274,7 +274,7 @@ const sorttable = {
     return 1;
   },
   sort_ddmm: function(a,b) {
-    mtch = a[0].match(sorttable.DATE_RE);
+    let mtch = a[0].match(sorttable.DATE_RE);
     let y = mtch[3]; let m = mtch[2]; let d = mtch[1];
     if (m.length == 1) m = '0'+m;
     if (d.length == 1) d = '0'+d;
@@ -290,15 +290,15 @@ const sorttable = {
   },
   sort_mmdd: function(a,b) {
     mtch = a[0].match(sorttable.DATE_RE);
-    y = mtch[3]; d = mtch[2]; m = mtch[1];
+    let y = mtch[3]; let d = mtch[2]; let m = mtch[1];
     if (m.length == 1) m = '0'+m;
     if (d.length == 1) d = '0'+d;
-    dt1 = y+m+d;
+    let dt1 = y+m+d;
     mtch = b[0].match(sorttable.DATE_RE);
     y = mtch[3]; d = mtch[2]; m = mtch[1];
     if (m.length == 1) m = '0'+m;
     if (d.length == 1) d = '0'+d;
-    dt2 = y+m+d;
+    let dt2 = y+m+d;
     if (dt1==dt2) return 0;
     if (dt1<dt2) return -1;
     return 1;

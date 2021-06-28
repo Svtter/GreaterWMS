@@ -1023,7 +1023,7 @@
             <th class="text-left">{{ $t('goods.view_goodslist.goods_code') }}</th>
             <th class="text-right">{{ $t('outbound.view_dn.total_weight') }}</th>
             <th class="text-right">{{ $t('outbound.view_dn.total_volume') }}</th>
-            <th class="text-right">{{ $t('outbound.view_dn.intransit_qty') }}/th>
+            <th class="text-right">{{ $t('outbound.view_dn.intransit_qty') }}</th>
             <th class="text-right">Comments</th>
           </tr>
           </thead>

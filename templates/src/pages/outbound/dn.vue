@@ -1008,14 +1008,22 @@
         <q-bar class="bg-light-blue-10 text-white rounded-borders" style="height: 50px">
           <div>{{ viewdn }}</div>
           <q-space />
+          {{ $t('outbound.dn') }}
         </q-bar>
         <q-card-section>
-          <div class="text-h6">Sender: {{ warehouse_detail.warehouse_name }}</div>
-          <div class="text-subtitle2">Address: {{ warehouse_detail.warehouse_city }}{{ warehouse_detail.warehouse_address }}</div>
-          <div class="text-subtitle2">Tel: {{ warehouse_detail.warehouse_contact }}</div>
-          <div class="text-h6">Receiver: {{ customer_detail.customer_name }}</div>
-          <div class="text-subtitle2">Address: {{ customer_detail.customer_city }}{{ customer_detail.customer_address }}</div>
-          <div class="text-subtitle2">Tel: {{ customer_detail.customer_contact }}</div>
+          <div class="row">
+            <div class="col-8">
+              <div class="text-h6">Sender: {{ warehouse_detail.warehouse_name }}</div>
+              <div class="text-subtitle2">Address: {{ warehouse_detail.warehouse_city }}{{ warehouse_detail.warehouse_address }}</div>
+              <div class="text-subtitle2">Tel: {{ warehouse_detail.warehouse_contact }}</div>
+              <div class="text-h6">Receiver: {{ customer_detail.customer_name }}</div>
+              <div class="text-subtitle2">Address: {{ customer_detail.customer_city }}{{ customer_detail.customer_address }}</div>
+              <div class="text-subtitle2">Tel: {{ customer_detail.customer_contact }}</div>
+            </div>
+            <div class="col-4">
+              <img :src="bar_code" style="width: 70%; margin-left: 15%"/>
+            </div>
+          </div>
         </q-card-section>
         <q-markup-table>
           <thead>
@@ -1221,6 +1229,7 @@ export default {
       height: '',
       table_list: [],
       viewprint_table: [],
+      bar_code: '',
       pickinglist_print_table: [],
       pickinglist_check: 0,
       warehouse_detail: {},
@@ -1314,6 +1323,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname + 'list/', {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.dn_status === 1) {
               item.dn_status = _this.$t('outbound.freshorder')
@@ -1367,6 +1377,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname + 'list/?dn_code__icontains=' + _this.filter, {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.dn_status === 1) {
               item.dn_status = _this.$t('outbound.freshorder')
@@ -1415,6 +1426,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname_previous, {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.dn_status === 1) {
               item.dn_status = _this.$t('outbound.freshorder')
@@ -1463,6 +1475,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname_next, {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.dn_status === 1) {
               item.dn_status = _this.$t('outbound.freshorder')
@@ -1971,6 +1984,18 @@ export default {
         _this.warehouse_detail = res.warehouse_detail
         _this.customer_detail = res.customer_detail
         _this.viewdn = e.dn_code
+        var QRCode = require('qrcode')
+        QRCode.toDataURL(e.bar_code, [{
+          errorCorrectionLevel: 'H',
+          mode: 'byte',
+          version: '2',
+          type: 'image/jpeg'
+        }]
+        ).then(url => {
+          _this.bar_code = url
+        }).catch(err => {
+          console.error(err)
+        })
         _this.viewForm = true
       })
     },

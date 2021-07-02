@@ -977,11 +977,11 @@
             <div class="row">
               <div class="col-8">
                 <div class="text-h6">Sender: {{ supplier_detail.supplier_name }}</div>
-               <div class="text-subtitle2">Address: {{ supplier_detail.supplier_city }}{{ supplier_detail.supplier_address }}</div>
-               <div class="text-subtitle2">Tel: {{ supplier_detail.supplier_contact }}</div>
-               <div class="text-h6">Receiver: {{ warehouse_detail.warehouse_name }}</div>
-               <div class="text-subtitle2">Address: {{ warehouse_detail.warehouse_city }}{{ warehouse_detail.warehouse_address }}</div>
-               <div class="text-subtitle2">Tel: {{ warehouse_detail.warehouse_contact }}</div>
+                <div class="text-subtitle2">Address: {{ supplier_detail.supplier_city }}{{ supplier_detail.supplier_address }}</div>
+                <div class="text-subtitle2">Tel: {{ supplier_detail.supplier_contact }}</div>
+                <div class="text-h6">Receiver: {{ warehouse_detail.warehouse_name }}</div>
+                <div class="text-subtitle2">Address: {{ warehouse_detail.warehouse_city }}{{ warehouse_detail.warehouse_address }}</div>
+                <div class="text-subtitle2">Tel: {{ warehouse_detail.warehouse_contact }}</div>
               </div>
               <div class="col-4">
                 <img :src="bar_code" style="width: 70%; margin-left: 15%"/>
@@ -1142,7 +1142,8 @@ export default {
       printObj: {
         id: 'printMe',
         popTitle: this.$t('inbound.asn')
-      }
+      },
+      devi: window.device
     }
   },
   methods: {
@@ -1151,6 +1152,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname + 'list/', {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.asn_status === 1) {
               item.asn_status = _this.$t('inbound.predeliverystock')
@@ -1197,6 +1199,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname + 'list/?asn_code__icontains=' + _this.filter, {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.asn_status === 1) {
               item.asn_status = _this.$t('inbound.predeliverystock')
@@ -1243,6 +1246,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname_previous, {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.asn_status === 1) {
               item.asn_status = _this.$t('inbound.predeliverystock')
@@ -1289,6 +1293,7 @@ export default {
       if (LocalStorage.has('auth')) {
         getauth(_this.pathname_next, {
         }).then(res => {
+          _this.table_list = []
           res.results.forEach((item) => {
             if (item.asn_status === 1) {
               item.asn_status = _this.$t('inbound.predeliverystock')
@@ -1763,13 +1768,11 @@ export default {
           version: '2',
           type: 'image/jpeg'
         }]
-        )
-          .then(url => {
-            _this.bar_code = url
-          })
-          .catch(err => {
-            console.error(err)
-          })
+        ).then(url => {
+          _this.bar_code = url
+        }).catch(err => {
+          console.error(err)
+        })
         _this.viewForm = true
       })
     },

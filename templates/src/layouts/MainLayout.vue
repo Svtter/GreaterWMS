@@ -16,13 +16,6 @@
         </transition>
         <q-space />
         <transition appear enter-active-class="animated zoomIn">
-          <q-btn v-show="$q.platform.is.desktop && !$q.platform.is.electron" icon="img:statics/icons/logo.png" stretch flat :label="$t('index.home')" to="/">
-            <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
-              {{ $t('index.title_tip') }}
-            </q-tooltip>
-          </q-btn>
-        </transition>
-        <transition appear enter-active-class="animated zoomIn">
           <a v-show="$q.platform.is.desktop && !$q.platform.is.electron" href="/docs/" style="text-decoration:none; color: #c8e6c9">
             <q-btn icon="api" round dense flat style="margin: 0 10px 0 10px">
               <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[15, 15]" content-style="font-size: 12px">
@@ -134,9 +127,6 @@
     <q-drawer
         v-model="drawerleft"
         show-if-above
-        :mini="miniState"
-        @mouseover="miniState = false"
-        @mouseout="miniState = true"
         :width="200"
         :breakpoint="500"
         bordered
@@ -145,6 +135,19 @@
       <q-scroll-area class="fit" style="overflow-y: auto"
       >
         <q-list>
+          <q-item v-show="$q.localStorage.getItem('staff_type') !== 'Supplier' &&
+                          $q.localStorage.getItem('staff_type') !== 'Customer' &&
+                          $q.localStorage.getItem('staff_type') !== 'dashboard'
+                         "
+                  v-if="$q.platform.is.desktop"
+                  clickable to="/dashboard/linechart" @click="linkChange('dashboard')" v-ripple exact :active="link === 'dashboard'" :class="{ 'my-menu-link': link === 'dashboard' }">
+            <q-item-section avatar>
+              <q-icon name="auto_graph" />
+            </q-item-section>
+            <q-item-section>
+              {{ $t('menuItem.dashboard') }}
+            </q-item-section>
+          </q-item>
           <q-item v-show="$q.localStorage.getItem('staff_type') !== 'Supplier' &&
                           $q.localStorage.getItem('staff_type') !== 'Customer' &&
                           $q.localStorage.getItem('staff_type') !== 'Outbound'
@@ -263,10 +266,25 @@
                   v-if="$q.platform.is.desktop"
             clickable to="/driver/driverlist" @click="linkChange('driver')" v-ripple exact :active="link === 'driver'" :class="{ 'my-menu-link': link === 'driver' }">
             <q-item-section avatar>
-              <q-icon name="img:statics/staff/driver.png" />
+              <q-icon name="transfer_within_a_station" />
             </q-item-section>
             <q-item-section>
               {{ $t('menuItem.driver') }}
+            </q-item-section>
+          </q-item>
+          <q-separator v-show="$q.platform.is.desktop"/>
+          <q-item v-show="$q.localStorage.getItem('staff_type') !== 'Supplier' &&
+                          $q.localStorage.getItem('staff_type') !== 'Customer' &&
+                          $q.localStorage.getItem('staff_type') !== 'Inbound' &&
+                          $q.localStorage.getItem('staff_type') !== 'StockControl'
+                         "
+                  v-if="$q.platform.is.desktop"
+                  clickable to="/uploadcenter/uploadinbound" @click="linkChange('uploadinbound')" v-ripple exact :active="link === 'uploadinbound'" :class="{ 'my-menu-link': link === 'uploadinbound' }">
+            <q-item-section avatar>
+              <q-icon name="file_upload" />
+            </q-item-section>
+            <q-item-section>
+              {{ $t('menuItem.uploadcenter') }}
             </q-item-section>
           </q-item>
           <q-separator v-show="$q.platform.is.desktop"/>
@@ -760,7 +778,6 @@ export default {
       authid: false,
       left: false,
       drawerleft: false,
-      miniState: true,
       tab: '',
       login: false,
       link: localStorage.getItem('menulink'),

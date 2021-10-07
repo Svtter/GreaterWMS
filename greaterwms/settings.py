@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'customer.apps.CustomerConfig',
     'capital.apps.CapitalConfig',
     'cyclecount.apps.CyclecountConfig',
+    'dashboard.apps.DashboardConfig',
     'warehouse.apps.WarehouseConfig',
     'goods.apps.GoodsConfig',
     'goodsunit.apps.GoodsunitConfig',
@@ -101,7 +102,7 @@ WSGI_APPLICATION = 'greaterwms.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# update
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

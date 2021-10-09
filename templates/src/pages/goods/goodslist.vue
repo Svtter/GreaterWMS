@@ -345,6 +345,16 @@
              </q-td>
              <template v-if="!editMode">
                <q-td key="action" :props="props" style="width: 100px">
+                 <q-btn v-show="$q.localStorage.getItem('staff_type') !== 'Supplier' &&
+                              $q.localStorage.getItem('staff_type') !== 'Customer' &&
+                              $q.localStorage.getItem('staff_type') !== 'Outbound' &&
+                              $q.localStorage.getItem('staff_type') !== 'StockControl'
+                             "
+                        round flat push color="info" icon="visibility" @click="viewData(props.row)">
+                   <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
+                     {{ $t('printthisasn') }}
+                   </q-tooltip>
+                 </q-btn>
                  <q-btn round flat push color="purple" icon="edit" @click="editData(props.row)">
                    <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
                     {{ $t('edit') }}
@@ -571,6 +581,33 @@
          </div>
        </q-card>
      </q-dialog>
+      <q-dialog v-model="viewForm">
+        <q-card id="printMe" style="width: 500px;height:250px">
+          <q-card-section>
+            <div class="row" style="height: 50px">
+              <div class="col-3" >
+                <img src='/statics/goods/logo.png'  style="width: 60px;height: 50px;margin-top: 5px">
+              </div>
+              <div class="col-9" style="height: 50px;float: contour;margin-top: 10px" >
+                <p style="font-size: 20px;font-weight: 550">{{$t('goods.view_goodslist.goods_code') + ':' + goods_code}}</p>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-8" style="margin-top: 30px">
+                <p style="font-size: 20px;font-weight: 550">{{$t('goods.view_goodslist.goods_name') + ':'}}</p>
+                <p style="font-size: 20px;font-weight: 550">{{goods_desc}}</p>
+              </div>
+              <div class="col-4" style="margin-top: 25px">
+                <img :src="bar_code" style="width: 70%"/>
+              </div>
+            </div>
+          </q-card-section>
+        </q-card>
+        <div style="float: right; padding: 15px 15px 15px 0">
+          <q-btn color="primary" icon="print" v-print="printObj">print</q-btn>
+        </div>
+      </q-dialog>
     </div>
 </template>
     <router-view />
@@ -583,6 +620,8 @@ export default {
   name: 'Pagegoodslist',
   data () {
     return {
+      goods_code: '',
+      goods_desc: '',
       openid: '',
       login_name: '',
       authin: '0',
@@ -592,6 +631,11 @@ export default {
       separator: 'cell',
       loading: false,
       height: '',
+      viewForm: false,
+      printObj: {
+        id: 'printMe',
+        popTitle: this.$t('inbound.asn')
+      },
       table_list: [],
       goods_unit_list: [],
       goods_class_list: [],
@@ -920,6 +964,25 @@ export default {
           })
         }
       })
+    },
+    viewData (e) {
+      var _this = this
+      _this.goods_code = e.goods_code
+      _this.goods_desc = e.goods_desc
+      console.log(e)
+      var QRCode = require('qrcode')
+      QRCode.toDataURL(e.bar_code, [{
+        errorCorrectionLevel: 'H',
+        mode: 'byte',
+        version: '2',
+        type: 'image/jpeg'
+      }]
+      ).then(url => {
+        _this.bar_code = url
+      }).catch(err => {
+        console.error(err)
+      })
+      _this.viewForm = true
     }
   },
   created () {

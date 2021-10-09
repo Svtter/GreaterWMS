@@ -144,7 +144,14 @@ export default {
   dashboards: {
     outbound_statements: 'OutboundStatements',
     inbound_statements: 'InboundStatements',
-    stock_statements: 'StockStatements'
+    total_sales: 'TotalSales',
+    category_sales_ranking: 'CategorySalesRanking',
+    sales_volume_ranking: 'SalesVolumeRanking',
+    sales_volumes_ranking: 'SalesVolumesRanking',
+    total_receipts: 'TotalReceipts',
+    category_receipt_ranking: 'CategoryReceiptRanking',
+    receiving_quantity_ranking: 'ReceivingQuantityRanking',
+    Receiving_amount_ranking: 'ReceivingAmountRanking'
   },
   finance: {
     capital: 'Capital',
@@ -181,11 +188,12 @@ export default {
     uploadinbound: 'UploadInbound',
     uploadfiles: 'UploadFile',
     upload: 'Upload',
-    uploadcapitalfile: 'UploadCapitalFile',
     uploadcustomerfile: 'Uploadcustomerfile',
-    uploadfreightfile: 'UploadFreightFile',
     uploadgoodslistfile: 'UploadGoodslistFile',
-    uploadsupplierfile: 'UploadSupplierFile'
+    uploadsupplierfile: 'UploadSupplierFile',
+    downloadgoodstemplate: 'DownloadGoodsTemplate',
+    downloadcustomertemplate: 'DownloadCustomerTemplate',
+    downloadsuppliertemplate: 'DownloadSupplierTemplate'
   },
   goods: {
     goods_list: 'Goods List',
@@ -302,6 +310,7 @@ export default {
     view_stocklist: {
       goods_code: 'Goods Code',
       goods_desc: 'Goods Desc',
+      goods_name: 'Goods Name',
       goods_qty: 'Total Qty',
       onhand_stock: 'On hand',
       can_order_stock: 'Can Order',

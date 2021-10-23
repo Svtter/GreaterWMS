@@ -40,10 +40,11 @@ export default {
     download: 'Download',
     updatetitle: 'Update Ready',
     updatedesc: 'Version Can Update Now',
-    update: 'Update Now'
+    update: 'Update Now',
+    chart: ''
   },
   menuItem: {
-    dashboard: 'Report Center',
+    dashboard: 'Dashboard',
     inbound: 'Inbound',
     outbound: 'Outbound',
     stock: 'Inventory',
@@ -55,8 +56,8 @@ export default {
     driver: 'Driver',
     customerdn: 'Customer DN',
     supplierasn: 'Supplieer ASN',
-    uploadcenter: 'UploadCenter',
-    downloadcenter: 'DownloadCenter'
+    uploadcenter: 'Upload Center',
+    downloadcenter: 'Download Center'
   },
   contact: 'Contact',
   sendmessage: 'Send A Message',
@@ -142,16 +143,14 @@ export default {
     }
   },
   dashboards: {
-    outbound_statements: 'OutboundStatements',
-    inbound_statements: 'InboundStatements',
-    total_sales: 'TotalSales',
-    category_sales_ranking: 'CategorySalesRanking',
-    sales_volume_ranking: 'SalesVolumeRanking',
-    sales_volumes_ranking: 'SalesVolumesRanking',
-    total_receipts: 'TotalReceipts',
-    category_receipt_ranking: 'CategoryReceiptRanking',
-    receiving_quantity_ranking: 'ReceivingQuantityRanking',
-    Receiving_amount_ranking: 'ReceivingAmountRanking'
+    outbound_statements: 'Outbound',
+    inbound_statements: 'Inbound',
+    total_sales: 'Total Sales',
+    sales_volume_ranking: 'Sales Volume Ranking',
+    sales_volumes_ranking: 'Sales Volumes Ranking',
+    total_receipts: 'Total Receipts',
+    receiving_quantity_ranking: 'Receiving Quantity Ranking',
+    Receiving_amount_ranking: 'Receiving Amount Ranking'
   },
   finance: {
     capital: 'Capital',
@@ -185,15 +184,19 @@ export default {
     }
   },
   upload_center: {
-    uploadinbound: 'UploadInbound',
-    uploadfiles: 'UploadFile',
+    initializeupload: 'Initialize upload',
+    uploadfiles: 'Upload',
     upload: 'Upload',
-    uploadcustomerfile: 'Uploadcustomerfile',
-    uploadgoodslistfile: 'UploadGoodslistFile',
-    uploadsupplierfile: 'UploadSupplierFile',
-    downloadgoodstemplate: 'DownloadGoodsTemplate',
-    downloadcustomertemplate: 'DownloadCustomerTemplate',
-    downloadsuppliertemplate: 'DownloadSupplierTemplate'
+    uploadcustomerfile: 'Upload Customerfile',
+    uploadgoodslistfile: 'Upload GoodslistFile',
+    uploadsupplierfile: 'Upload SupplierFile',
+    downloadgoodstemplate: 'Goods Example',
+    downloadcustomertemplate: 'Customer Example',
+    downloadsuppliertemplate: 'Supplier Example',
+    addupload: 'Add Upload'
+  },
+  community_mall: {
+    communitymall: 'Community Mall'
   },
   goods: {
     goods_list: 'Goods List',
@@ -221,7 +224,8 @@ export default {
       goods_specs: 'Goods Specs',
       goods_origin: 'Goods Origin',
       goods_cost: 'Goods Cost',
-      goods_price: 'Goods Price'
+      goods_price: 'Goods Price',
+      print_goods_label: 'Print Goods Label'
     },
     view_unit: {
       goods_unit: 'Goods Unit'
@@ -378,6 +382,10 @@ export default {
     scan_uptobin: 'Up To Bin',
     scan_picking: 'Picking',
     scan_shipping: 'Dispatch',
+    scan_movetobin: 'Bin Move',
+    scan_inventory: 'Count',
+    scan_goodsquery: 'Goods',
+    scan_locationquery: 'Bin',
     view_binmove: {
       goods_code: 'Goods Code',
       onhand_stock: 'OnHand Stock',

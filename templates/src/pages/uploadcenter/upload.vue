@@ -9,7 +9,12 @@
             <transition appear enter-active-class="animated zoomIn">
               <q-route-tab v-show="$q.localStorage.getItem('staff_type') !== 'Supplier' &&
                           $q.localStorage.getItem('staff_type') !== 'Customer'
-                         " name="uploadinbound" :label="$t('upload_center.uploadfiles')" icon="img:statics/uploadcenter/uploadinbound.png" to="/uploadcenter/uploadinbound" exact/>
+                         " name="initializeupload" :label="$t('upload_center.initializeupload')" icon="img:statics/uploadcenter/uploadinbound.png" to="/uploadcenter/initializeupload" exact/>
+            </transition>
+            <transition appear enter-active-class="animated zoomIn">
+              <q-route-tab v-show="$q.localStorage.getItem('staff_type') !== 'Supplier' &&
+                          $q.localStorage.getItem('staff_type') !== 'Customer'
+                         " name="addupload" :label="$t('upload_center.addupload')" icon="img:statics/uploadcenter/addupload.png" to="/uploadcenter/addupload" exact/>
             </transition>
           </q-tabs>
         </div>
@@ -23,7 +28,12 @@
 
 <script>
 export default {
-  name: 'upload'
+  name: 'upload',
+  data () {
+    return {
+      detaillink: ''
+    }
+  }
 }
 </script>
 

@@ -40,7 +40,8 @@ export default {
     download: 'ダウンロード',
     updatetitle: 'アップグレードの準備ができました',
     updatedesc: 'バージョンをアップグレードする準備ができました',
-    update: '今すぐ写新'
+    update: '今すぐ写新',
+    chart: 'レポート'
   },
   menuItem: {
     dashboard: 'レポートセンター',
@@ -185,7 +186,7 @@ export default {
     }
   },
   upload_center: {
-    uploadinbound: '入庫ファイルをアップロードする',
+    initializeupload: 'アップロードを初期化',
     uploadfiles: 'ファイルをアップロード',
     upload: 'アップロード',
     uploadcustomerfile: '顧客リストをアップロードする',
@@ -193,7 +194,11 @@ export default {
     uploadsupplierfile: 'サプライヤーリストをアップロードする',
     downloadgoodstemplate: '商品テンプレートをダウンロード',
     downloadcustomertemplate: 'クライアントテンプレートをダウンロード',
-    downloadsuppliertemplate: 'ベンダーテンプレートをダウンロード'
+    downloadsuppliertemplate: 'ベンダーテンプレートをダウンロード',
+    addupload: 'アップロード'
+  },
+  community_mall: {
+    communitymall: 'コミュニティ'
   },
   goods: {
     goods_list: '製品リスト',
@@ -222,7 +227,8 @@ export default {
       goods_specs: '製品仕様',
       goods_origin: '製品の起源',
       goods_cost: '製品コスト',
-      goods_price: '製品価格'
+      goods_price: '製品価格',
+      print_goods_label: '商品のラベルを印刷します'
     },
     view_unit: {
       goods_unit: '製品単位'
@@ -378,6 +384,10 @@ export default {
     scan_uptobin: '棚まで',
     scan_picking: 'ピッキング',
     scan_shipping: 'ディスパッチ',
+    scan_movetobin: 'ライブラリを移動',
+    scan_inventory: '棚卸しをする',
+    scan_goodsquery: '商品の照会',
+    scan_locationquery: 'データベースの検索',
     view_binmove: {
       goods_code: '製品コード',
       onhand_stock: '既存の在庫',

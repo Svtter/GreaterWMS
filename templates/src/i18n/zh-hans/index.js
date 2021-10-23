@@ -40,7 +40,8 @@ export default {
     download: '下载',
     updatetitle: '升级就绪',
     updatedesc: '版本已经升级准备就绪',
-    update: '马上更新'
+    update: '马上更新',
+    chart: '报表'
   },
   menuItem: {
     dashboard: '报表中心',
@@ -185,7 +186,7 @@ export default {
     }
   },
   upload_center: {
-    uploadinbound: '上传入库文件',
+    initializeupload: '初始化上传',
     uploadfiles: '上传文件',
     upload: '上传',
     uploadcustomerfile: '上传客户清单',
@@ -193,12 +194,16 @@ export default {
     uploadsupplierfile: '上传供应商清单',
     downloadgoodstemplate: '下载商品模板',
     downloadcustomertemplate: '下载客户模板',
-    downloadsuppliertemplate: '下载供应商模板'
+    downloadsuppliertemplate: '下载供应商模板',
+    addupload: '新增上传'
   },
   download_center: {
     downloadinbound: '下载入库列表',
     downloadfiles: '下载文件',
     download: '下载'
+  },
+  community_mall: {
+    communitymall: '社区商城'
   },
   goods: {
     goods_list: '商品列表',
@@ -227,7 +232,8 @@ export default {
       goods_specs: '商品规格',
       goods_origin: '商品产地',
       goods_cost: '商品成本',
-      goods_price: '商品价格'
+      goods_price: '商品价格',
+      print_goods_label: '打印商品标签'
     },
     view_unit: {
       goods_unit: '商品单位'
@@ -382,7 +388,11 @@ export default {
     scan_sorting: '分拣',
     scan_uptobin: '上架',
     scan_picking: '拣货',
-    scan_shipping: '发货',
+    scan_shipping: '装车发货',
+    scan_movetobin: '移库',
+    scan_inventory: '盘点',
+    scan_goodsquery: '货物查询',
+    scan_locationquery: '库位查询',
     view_binmove: {
       goods_code: '产品名称',
       onhand_stock: '现有库存',

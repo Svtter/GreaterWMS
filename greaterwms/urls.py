@@ -12,7 +12,7 @@ from . import views
 schema_view = get_schema_view(
    openapi.Info(
        title="GreaterWMS--API Docs",
-       default_version='v2.0.25',
+       default_version='v2.0.26',
        description=
        """
         openid:
@@ -43,6 +43,7 @@ urlpatterns = [
     path('cyclecount/', include('cyclecount.urls')),
     path('chat/', include('chat.urls')),
     path('capital/', include('capital.urls')),
+    path('dashboard/', include('dashboard.urls')),
     path('driver/', include('driver.urls')),
     path('stock/', include('stock.urls')),
     path('company/', include('company.urls')),

@@ -419,21 +419,14 @@ const routes = [
         component: () => import('pages/uploadcenter/upload.vue'),
         children: [
           {
-            path: 'uploadinbound',
-            name: 'uploadinbound',
-            component: () => import('pages/uploadcenter/uploadlist.vue')
-          }
-        ]
-      },
-      {
-        path: 'downloadcenter',
-        name: 'downloadcenter',
-        component: () => import('pages/downloadcenter/download.vue'),
-        children: [
+            path: 'initializeupload',
+            name: 'initializeupload',
+            component: () => import('pages/uploadcenter/initializeupload.vue')
+          },
           {
-            path: 'downloadinbound',
-            name: 'downloadinbound',
-            component: () => import('pages/downloadcenter/downloadinbound')
+            path: 'addupload',
+            name: 'addupload',
+            component: () => import('pages/uploadcenter/addupload.vue')
           }
         ]
       }

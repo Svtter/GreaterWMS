@@ -40,7 +40,8 @@ export default {
     download: '下載',
     updatetitle: '升級就緒',
     updatedesc: '版本已經升級準備就緒',
-    update: '馬上更新'
+    update: '馬上更新',
+    chart: '報表'
   },
   menuItem: {
     dashboard: '報表中心',
@@ -185,7 +186,7 @@ export default {
     }
   },
   upload_center: {
-    uploadinbound: '上傳入庫清單',
+    initializeupload: '初始化上傳',
     uploadfiles: '上傳文件',
     upload: '上傳',
     uploadcustomerfile: '上傳客戶清單',
@@ -193,7 +194,11 @@ export default {
     uploadsupplierfile: '上傳供應商清單',
     downloadgoodstemplate: '下載商品模板',
     downloadcustomertemplate: '下載客戶模板',
-    downloadsuppliertemplate: '下載供應商模板'
+    downloadsuppliertemplate: '下載供應商模板',
+    addupload: '新增上傳'
+  },
+  community_mall: {
+    communitymall: '社區商城'
   },
   goods: {
     goods_list: '商品列表',
@@ -222,7 +227,8 @@ export default {
       goods_specs: '商品規格',
       goods_origin: '商品產地',
       goods_cost: '商品成本',
-      goods_price: '商品價格'
+      goods_price: '商品價格',
+      print_goods_label: '打印商品標簽'
     },
     view_unit: {
       goods_unit: '商品單位'
@@ -377,7 +383,11 @@ export default {
     scan_sorting: '分揀',
     scan_uptobin: '上架',
     scan_picking: '揀貨',
-    scan_shipping: '發貨',
+    scan_shipping: '裝車發貨',
+    scan_movetobin: '移庫',
+    scan_inventory: '盤點',
+    scan_goodsquery: '貨物查詢',
+    scan_locationquery: '庫位查詢',
     view_binmove: {
       goods_code: '產品名稱',
       onhand_stock: '現有庫存',

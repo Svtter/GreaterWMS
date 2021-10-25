@@ -1,6 +1,6 @@
 # 聚商汇WMS--开源仓库管理系统
 
-<p><div align=center><img width="150" height="150" src="https://github.com/Singosgu/GreaterWMS/blob/master/static/img/logo.png?raw=true?raw=true"/></div></p>
+<p><div align=center><img width="150" height="150" src="https://gitee.com/Singosgu/GreaterWMS/raw/master/static/img/logo.png"/></div></p>
 
 ---
 
@@ -364,32 +364,32 @@ const wsurl = 'wss://你的域名/websocket/'
 
 ### 界面截图
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/inbound.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/inbound.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/outbound.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/outbound.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/stock.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/stock.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/finace.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/finace.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/goods.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/goods.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/baseinfo.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/baseinfo.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/warehouse.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/warehouse.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/staff.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/staff.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/driver.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/driver.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/api.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/api.png"/></div></p>
 
-<p><div align=center><img width="100%" height="100%" src="https://github.com/Singosgu/picfile/blob/master/CN/chat.png?raw=true"/></div></p>
-<p><div align=center><img src="https://github.com/Singosgu/picfile/blob/master/CN/app1.png?raw=true"/></div></p>
+<p><div align=center><img width="100%" height="100%" src="https://gitee.com/Singosgu/picfile/raw/master/CN/chat.png"/></div></p>
+<p><div align=center><img src="https://gitee.com/Singosgu/picfile/raw/master/CN/app1.png"/></div></p>
 
-<p><div align=center><img src="https://github.com/Singosgu/picfile/blob/master/CN/app2.png?raw=true"/></div></p>
+<p><div align=center><img src="https://gitee.com/Singosgu/picfile/raw/master/CN/app2.png"/></div></p>
 
-<p><div align=center><img src="https://github.com/Singosgu/picfile/blob/master/CN/app3.png?raw=true"/></div></p>
+<p><div align=center><img src="https://gitee.com/Singosgu/picfile/raw/master/CN/app3.png"/></div></p>
 
-<p><div align=center><img src="https://github.com/Singosgu/picfile/blob/master/CN/app4.png?raw=true"/></div></p>
+<p><div align=center><img src="https://gitee.com/Singosgu/picfile/raw/master/CN/app4.png"/></div></p>
 

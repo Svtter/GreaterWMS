@@ -297,10 +297,10 @@ export default {
       deleteForm: false,
       deleteid: 0,
       error1: this.$t('baseinfo.view_company.error1'),
-      error2: this.$t('baseinfo.view_company.error1'),
-      error3: this.$t('baseinfo.view_company.error1'),
-      error4: this.$t('baseinfo.view_company.error1'),
-      error5: this.$t('baseinfo.view_company.error1')
+      error2: this.$t('baseinfo.view_company.error2'),
+      error3: this.$t('baseinfo.view_company.error3'),
+      error4: this.$t('baseinfo.view_company.error4'),
+      error5: this.$t('baseinfo.view_company.error5')
     }
   },
   methods: {
@@ -364,22 +364,40 @@ export default {
     },
     newDataSubmit () {
       var _this = this
-      _this.newFormData.creater = _this.login_name
-      postauth(_this.pathname, _this.newFormData).then(res => {
-        _this.getList()
-        _this.newDataCancel()
-        _this.$q.notify({
-          message: 'Success Create',
-          icon: 'check',
-          color: 'green'
+      var companies = []
+      _this.table_list.forEach(i => {
+        companies.push(i.company_name)
+      })
+      if (companies.indexOf(_this.newFormData.company_name) === -1 && _this.newFormData.company_name.length !== 0) {
+        _this.newFormData.creater = _this.login_name
+        postauth(_this.pathname, _this.newFormData).then(res => {
+          _this.getList()
+          _this.newDataCancel()
+          _this.$q.notify({
+            message: 'Success Create',
+            icon: 'check',
+            color: 'green'
+          })
+        }).catch(err => {
+          _this.$q.notify({
+            message: err.detail,
+            icon: 'close',
+            color: 'negative'
+          })
         })
-      }).catch(err => {
+      } else if (companies.indexOf(_this.newFormData.company_name) !== -1) {
         _this.$q.notify({
-          message: err.detail,
+          message: _this.$t('notice.baseinfoerror.companyerror'),
           icon: 'close',
           color: 'negative'
         })
-      })
+      } else if (_this.newFormData.company_name.length === 0) {
+        _this.$q.notify({
+          message: _this.$t('baseinfo.view_company.error1'),
+          icon: 'close',
+          color: 'negative'
+        })
+      }
     },
     newDataCancel () {
       var _this = this

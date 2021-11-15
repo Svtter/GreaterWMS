@@ -98,7 +98,7 @@ export default {
   downloadasnlisttip: '到着通知リストのダウンロード',
   downloadasndetailtip: '到着通知の詳細をダウンロードする',
   printthisasn: '到着通知を表示',
-  confirmdelivery: 'ASNが到着したことを確認します',
+  confirmdelivery: 'が到着したことを確認します',
   finishloading: 'アンロードが完了したことを確認します',
   confirmsorted: '並べ替えが完了したことを確認します',
   downloaddnlist: 'ダウンロードリスト',
@@ -114,6 +114,7 @@ export default {
   confirmpicked: 'ピッキングが完了したことの確認',
   dispatch: '輸送する',
   deletebackorder: 'バックオーダーを削除する',
+  confirminventoryresults: '在庫結果の確認',
   baseinfo: {
     company_info: '会社情報',
     supplier: 'サプライヤー',
@@ -355,7 +356,7 @@ export default {
     view_staff: {
       staff_name: 'スタッフ名',
       staff_type: 'スタッフクラス型',
-      error1: '数量を入力してください。数量は必ず0より大きくしてください。',
+      error1: '従業員名を入力してください',
       error2: '従業員の名前を入力してください。'
     }
   },
@@ -396,7 +397,8 @@ export default {
       cyclecountresulttip: '在庫結果を確認する',
       daychoice: '日付の選択',
       daychoicetip: '日付に対応する在庫テーブルを選択してください',
-      error1: 'カウントは0より大きくしなければなりません。'
+      error1: 'カウントは0より大きくしなければなりません。',
+      dateerror: '間違った日付が選択されました'
     }
   },
   warehouse: {
@@ -404,6 +406,7 @@ export default {
     binset: 'ロケーション設定',
     binsize: 'ロケーションサイズ',
     property: 'ロケーション属性',
+    printbin: '場所ラベルを印刷する',
     view_warehouseset: {
       error1: '倉庫名を入力してください。',
       error2: '倉庫がある都市を入力してください。',
@@ -463,6 +466,27 @@ export default {
     valerror: '正しい値を入力してください',
     unknow_error: '未知の間違い',
     network_error: 'ネットワーク異常',
+    cyclecounterror: 'データなし',
+    userererror: 'ユーザー名は既に存在します',
+    goodserror: {
+      goods_listerror: '商品コードは既に存在します',
+      goods_uniterror: '商品ユニットはすでに存在します',
+      goods_classerror: '商品カテゴリはすでに存在します',
+      goods_colorerror: '商品の色はすでに存在します',
+      goods_branderror: '製品ブランドはすでに存在します',
+      goods_shapeerror: '商品の形状はすでに存在します',
+      goods_specserror: '製品仕様はすでに存在します',
+      goods_originerror: '商品の出所はすでに存在します'
+    },
+    baseinfoerror: {
+      companyerror: '会社名はすでに存在します',
+      customererror: '顧客名はすでに存在します',
+      suppliererror: 'サプライヤー名はすでに存在します'
+    },
+    warehouseerror: {
+      binseterror: 'ロケーション名は既に存在します',
+      binsizeerror: 'ロケーションサイズはすでに存在します'
+    },
     400: '不正なリクエスト（400）',
     401: '認証が取得されていません（401）',
     403: 'アクセスが拒否されました（403）',

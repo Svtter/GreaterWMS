@@ -114,6 +114,7 @@ export default {
   confirmpicked: 'Confirm Picked',
   dispatch: 'Dispatch & Shipping',
   deletebackorder: 'Delete Back Order',
+  confirminventoryresults: 'Confirm Inventory Results',
   baseinfo: {
     company_info: 'Company Info',
     supplier: 'Supplier',
@@ -395,7 +396,8 @@ export default {
       cyclecountresulttip: 'Confirm The Cycle Count Result',
       daychoice: 'Date Selection',
       daychoicetip: 'Select The Cycle Count Table Corresponding To The Date',
-      error1: 'Count Quantity Must Be Greater Than 0'
+      error1: 'Count Quantity Must Be Greater Than 0',
+      dateerror: 'Incorrect Date Selected'
     }
   },
   warehouse: {
@@ -403,6 +405,7 @@ export default {
     binset: 'Bin Set',
     binsize: 'Bin Size',
     property: 'Bin Property',
+    printbin: 'Print Bin Label',
     view_warehouseset: {
       error1: 'Please Enter the Warehouse Name',
       error2: 'Please Enter The Warehouse City',
@@ -462,6 +465,29 @@ export default {
     valerror: 'Please enter the correct value',
     unknow_error: 'Unknow Error',
     network_error: 'Network Abnormal',
+    nullerror: '',
+    cyclecounterror: 'No Data',
+    userererror: 'Username Already Exists',
+    capitalerror: 'Fixed Asset Name Already Exists',
+    goodserror: {
+      goods_listerror: 'The Product Code Already Exists',
+      goods_uniterror: 'Commodity Unit Already Exists',
+      goods_classerror: 'The Product Category Already Exists',
+      goods_colorerror: 'Product Color Already Exists',
+      goods_branderror: 'The Product Brand Already Exists',
+      goods_shapeerror: 'The Product Shape Already Exists',
+      goods_specserror: 'Product Specifications Already Exists',
+      goods_originerror: 'The Origin Of The Goods Already Exists'
+    },
+    baseinfoerror: {
+      companyerror: 'Company Name Already Exists',
+      customererror: 'Customer Name Already Exists',
+      suppliererror: 'Supplier Name Already Exists'
+    },
+    warehouseerror: {
+      binseterror: 'The Location Name Already Exists',
+      binsizeerror: 'Location Size Already Exists'
+    },
     400: 'Bad request (400)',
     401: 'Authorization not obtained (401)',
     403: 'Access denied (403)',

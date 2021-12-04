@@ -586,7 +586,7 @@
         <q-card-section>
           <div class="row" style="height: 50px">
             <div class="col-3">
-              <img src='/statics/goods/logo.png'  style="width: 60px;height: 50px;margin-top: 5px;margin-left: 5px">
+              <img src='statics/goods/logo.png'  style="width: 60px;height: 50px;margin-top: 5px;margin-left: 5px">
             </div>
             <div class="col-9" style="height: 50px;float: contour;margin-top: 10px" >
               <p style="font-size: 20px;font-weight: 550">{{$t('goods.view_goodslist.goods_code') + ':' + goods_code}}</p>
@@ -984,22 +984,30 @@ export default {
     },
     downloadData () {
       var _this = this
-      getfile(_this.pathname + 'file/?lang=' + LocalStorage.getItem('lang')).then(res => {
-        var timeStamp = Date.now()
-        var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
-        const status = exportFile(
-          _this.pathname + formattedString + '.csv',
-          '\uFEFF' + res.data,
-          'text/csv'
-        )
-        if (status !== true) {
-          _this.$q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
-      })
+      if (LocalStorage.has('auth')) {
+        getfile(_this.pathname + 'file/?lang=' + LocalStorage.getItem('lang')).then(res => {
+          var timeStamp = Date.now()
+          var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
+          const status = exportFile(
+            _this.pathname + formattedString + '.csv',
+            '\uFEFF' + res.data,
+            'text/csv'
+          )
+          if (status !== true) {
+            _this.$q.notify({
+              message: 'Browser denied file download...',
+              color: 'negative',
+              icon: 'warning'
+            })
+          }
+        })
+      } else {
+        _this.$q.notify({
+          message: _this.$t('notice.loginerror'),
+          color: 'negative',
+          icon: 'warning'
+        })
+      }
     },
     viewData (e) {
       var _this = this

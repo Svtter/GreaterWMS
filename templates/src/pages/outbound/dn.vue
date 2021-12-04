@@ -1191,7 +1191,6 @@
                      :rules="[
                        val => val !== null && val !== '' && val > 0 || error2
                      ]"
-                     @keyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
             >
               <template v-slot:after>
                 <q-input dense
@@ -1203,9 +1202,8 @@
                          :label="$t('outbound.view_dn.delivery_damage_qty')"
                          style="margin-top: 11%"
                          :rules="[
-                           val => item.delivery_damage_qty < item.intransit_qty && val !== null && val !== '' || error2
+                           val => item.delivery_damage_qty <= item.intransit_qty && val !== null && val !== '' || error2
                          ]"
-                         @keyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
                 >
                 </q-input>
               </template>
@@ -2094,41 +2092,57 @@ export default {
     },
     downloadlistData () {
       var _this = this
-      getfile(_this.pathname + 'filelist/?lang=' + LocalStorage.getItem('lang')).then(res => {
-        var timeStamp = Date.now()
-        var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
-        const status = exportFile(
-          _this.pathname + 'list' + formattedString + '.csv',
-          '\uFEFF' + res.data,
-          'text/csv'
-        )
-        if (status !== true) {
-          _this.$q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
-      })
+      if (LocalStorage.has('auth')) {
+        getfile(_this.pathname + 'filelist/?lang=' + LocalStorage.getItem('lang')).then(res => {
+          var timeStamp = Date.now()
+          var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
+          const status = exportFile(
+            _this.pathname + 'list' + formattedString + '.csv',
+            '\uFEFF' + res.data,
+            'text/csv'
+          )
+          if (status !== true) {
+            _this.$q.notify({
+              message: 'Browser denied file download...',
+              color: 'negative',
+              icon: 'warning'
+            })
+          }
+        })
+      } else {
+        _this.$q.notify({
+          message: _this.$t('notice.loginerror'),
+          color: 'negative',
+          icon: 'warning'
+        })
+      }
     },
     downloaddetailData () {
       var _this = this
-      getfile(_this.pathname + 'filedetail/?lang=' + LocalStorage.getItem('lang')).then(res => {
-        var timeStamp = Date.now()
-        var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
-        const status = exportFile(
-          _this.pathname + 'detail' + formattedString + '.csv',
-          '\uFEFF' + res.data,
-          'text/csv'
-        )
-        if (status !== true) {
-          _this.$q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
-      })
+      if (LocalStorage.has('auth')) {
+        getfile(_this.pathname + 'filedetail/?lang=' + LocalStorage.getItem('lang')).then(res => {
+          var timeStamp = Date.now()
+          var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
+          const status = exportFile(
+            _this.pathname + 'detail' + formattedString + '.csv',
+            '\uFEFF' + res.data,
+            'text/csv'
+          )
+          if (status !== true) {
+            _this.$q.notify({
+              message: 'Browser denied file download...',
+              color: 'negative',
+              icon: 'warning'
+            })
+          }
+        })
+      } else {
+        _this.$q.notify({
+          message: _this.$t('notice.loginerror'),
+          color: 'negative',
+          icon: 'warning'
+        })
+      }
     }
   },
   created () {

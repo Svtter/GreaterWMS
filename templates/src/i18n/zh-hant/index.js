@@ -41,7 +41,8 @@ export default {
     updatetitle: '升級就緒',
     updatedesc: '版本已經升級準備就緒',
     update: '馬上更新',
-    chart: '報表'
+    chart: '報表',
+    current_user: '當前用戶'
   },
   menuItem: {
     dashboard: '報表中心',
@@ -468,6 +469,8 @@ export default {
     cyclecounterror: '沒有數據',
     userererror: '用戶名已存在',
     capitalerror: '固定資產名稱已存在',
+    valuenullerror: '請填寫完整數據',
+    loginerror: '請先登錄',
     goodserror: {
       goods_listerror: '商品編碼已存在',
       goods_uniterror: '商品單位已存在',

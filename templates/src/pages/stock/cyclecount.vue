@@ -57,7 +57,7 @@
                        type="number"
                        :label="$t('stock.view_stocklist.physical_inventory')"
                        :rules="[ val => val && val > 0 || val == 0 || error1]"
-                       @keyup="value=value.replace(/^(0+)|[^\d]+/g,'')"
+                       @blur="value=value.replace(/^(0+)|[^\d]+/g,'')"
               />
             </q-td>
             <q-td key="difference" :props="props">
@@ -164,7 +164,8 @@ export default {
     ConfirmCount () {
       var _this = this
       if (LocalStorage.has('auth')) {
-        if (_this.table_list.length === 0) {
+        if (_this.table_list.length) {
+          _this.CountFrom = false
           _this.$q.notify({
             message: _this.$t('notice.cyclecounterror'),
             icon: 'close',
@@ -196,22 +197,30 @@ export default {
     },
     downloadData () {
       var _this = this
-      getfile('cyclecount/filecyclecountday/?lang=' + LocalStorage.getItem('lang')).then(res => {
-        var timeStamp = Date.now()
-        var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
-        const status = exportFile(
-          'cyclecountday_' + formattedString + '.csv',
-          '\uFEFF' + res.data,
-          'text/csv'
-        )
-        if (status !== true) {
-          _this.$q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
-      })
+      if (LocalStorage.has('auth')) {
+        getfile('cyclecount/filecyclecountday/?lang=' + LocalStorage.getItem('lang')).then(res => {
+          var timeStamp = Date.now()
+          var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
+          const status = exportFile(
+            'cyclecountday_' + formattedString + '.csv',
+            '\uFEFF' + res.data,
+            'text/csv'
+          )
+          if (status !== true) {
+            _this.$q.notify({
+              message: 'Browser denied file download...',
+              color: 'negative',
+              icon: 'warning'
+            })
+          }
+        })
+      } else {
+        _this.$q.notify({
+          message: _this.$t('notice.loginerror'),
+          color: 'negative',
+          icon: 'warning'
+        })
+      }
     },
     ConfirmCounts () {
       var _this = this

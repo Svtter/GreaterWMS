@@ -80,25 +80,9 @@
                 {{ props.row.bin_size }}
               </q-td>
             </template>
-            <template v-if="props.row.id === editid">
-              <q-td key="bin_property" :props="props">
-                <q-select dense
-                          outlined
-                          square
-                          v-model="editFormData.bin_property"
-                          :options="bin_property_list"
-                          transition-show="scale"
-                          transition-hide="scale"
-                          :label="$t('warehouse.view_binset.bin_property')"
-                          :rules="[ val => val && val.length > 0 || error3]"
-                />
-              </q-td>
-            </template>
-            <template v-else-if="props.row.id !== editid">
               <q-td key="bin_property" :props="props">
                 {{ props.row.bin_property }}
               </q-td>
-            </template>
             <q-td key="empty_label" :props="props">
               {{ props.row.empty_label }}
             </q-td>
@@ -130,7 +114,7 @@
                 </q-btn>
                 <q-btn round flat push color="dark" icon="delete" @click="deleteData(props.row.id)">
                   <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
-                    {{ $t('delete') }}1111
+                    {{ $t('delete') }}
                   </q-tooltip>
                 </q-btn>
               </q-td>
@@ -239,7 +223,7 @@
         <q-card-section>
           <div class="row" style="height: 50px">
             <div class="col-3">
-              <img src='/statics/goods/logo.png'  style="width: 60px;height: 50px;margin-top: 5px;margin-left: 5px">
+              <img src='statics/goods/logo.png'  style="width: 60px;height: 50px;margin-top: 5px;margin-left: 5px">
             </div>
             <div class="col-9" style="height: 50px;float: contour;margin-top: 10px" >
               <p style="font-size: 20px;font-weight: 550">{{$t('warehouse.view_binset.bin_name') + ':' + bin_name}}</p>
@@ -529,22 +513,30 @@ export default {
     },
     downloadData () {
       var _this = this
-      getfile(_this.pathname + 'file/?lang=' + LocalStorage.getItem('lang')).then(res => {
-        var timeStamp = Date.now()
-        var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
-        const status = exportFile(
-          _this.pathname + formattedString + '.csv',
-          '\uFEFF' + res.data,
-          'text/csv'
-        )
-        if (status !== true) {
-          _this.$q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
-      })
+      if (LocalStorage.has('auth')) {
+        getfile(_this.pathname + 'file/?lang=' + LocalStorage.getItem('lang')).then(res => {
+          var timeStamp = Date.now()
+          var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
+          const status = exportFile(
+            _this.pathname + formattedString + '.csv',
+            '\uFEFF' + res.data,
+            'text/csv'
+          )
+          if (status !== true) {
+            _this.$q.notify({
+              message: 'Browser denied file download...',
+              color: 'negative',
+              icon: 'warning'
+            })
+          }
+        })
+      } else {
+        _this.$q.notify({
+          message: _this.$t('notice.loginerror'),
+          color: 'negative',
+          icon: 'warning'
+        })
+      }
     },
     viewData (e) {
       var _this = this

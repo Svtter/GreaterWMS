@@ -172,7 +172,7 @@
            <q-input dense
                     outlined
                     square
-                    v-model="newFormData.staff_name"
+                    v-model.trim="newFormData.staff_name"
                     :label="$t('staff.view_staff.staff_name')"
                     autofocus
                     :rules="[ val => val && val.length > 0 || error1]"
@@ -238,6 +238,7 @@
                                 name-sanitize
                                 sent
                                 text-sanitize
+                                :stamp= "item.create_time"
                 />
                 <q-chat-message v-else
                                 :name="receiver"
@@ -245,6 +246,7 @@
                                 text-sanitize
                                 name-sanitize
                                 bg-color="grey-4"
+                                :stamp= "item.create_time"
                 />
               </div>
             </div>
@@ -253,7 +255,7 @@
       </q-card-section>
       <q-separator/>
       <q-card-actions align="right">
-        <q-input autofocus dense outlined square v-model="chat_text" :placeholder="$t('sendmessage')" class="bg-white col" @keyup.enter="websocketsend()" @keyup.esc="ChatClose()" />
+        <q-input maxlength="200" autofocus dense outlined square v-model="chat_text" :placeholder="$t('sendmessage')" class="bg-white col" @keyup.enter="websocketsend()" @keyup.esc="ChatClose()" />
         <q-btn flat :label="$t('send')" color="primary" @click="websocketsend()"></q-btn>
       </q-card-actions>
     </q-card>
@@ -405,6 +407,7 @@ export default {
     },
     newDataSubmit () {
       var _this = this
+      console.log(_this.newFormData.staff_name)
       var staffs = []
       _this.table_list.forEach(i => {
         staffs.push(i.staff_name)
@@ -619,22 +622,30 @@ export default {
     },
     downloadData () {
       var _this = this
-      getfile(_this.pathname + 'file/?lang=' + LocalStorage.getItem('lang')).then(res => {
-        var timeStamp = Date.now()
-        var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
-        const status = exportFile(
-          _this.pathname + formattedString + '.csv',
-          '\uFEFF' + res.data,
-          'text/csv'
-        )
-        if (status !== true) {
-          this.$q.notify({
-            message: 'Browser denied file download...',
-            color: 'negative',
-            icon: 'warning'
-          })
-        }
-      })
+      if (LocalStorage.has('auth')) {
+        getfile(_this.pathname + 'file/?lang=' + LocalStorage.getItem('lang')).then(res => {
+          var timeStamp = Date.now()
+          var formattedString = date.formatDate(timeStamp, 'YYYYMMDDHHmmssSSS')
+          const status = exportFile(
+            _this.pathname + formattedString + '.csv',
+            '\uFEFF' + res.data,
+            'text/csv'
+          )
+          if (status !== true) {
+            this.$q.notify({
+              message: 'Browser denied file download...',
+              color: 'negative',
+              icon: 'warning'
+            })
+          }
+        })
+      } else {
+        _this.$q.notify({
+          message: _this.$t('notice.loginerror'),
+          color: 'negative',
+          icon: 'warning'
+        })
+      }
     }
   },
   created () {

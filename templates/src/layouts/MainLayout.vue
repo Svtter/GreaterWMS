@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh LpR fFf" :style="{ height: $q.screen.height, width: $q.screen.width }">
     <q-header reveal elevated class="bg-primary text-white">
-      <q-toolbar class="main-headers text-white shadow-18 rounded-borders">
+      <q-toolbar :class="{'main-headers text-white shadow-18 rounded-borders': device !== 2, 'main-headers text-white rounded-borders': device === 2 }">
         <transition appear enter-active-class="animated zoomIn">
           <q-btn flat v-show="device !== 2" @click="drawerleft = !drawerleft" round dense icon="menu">
             <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[15, 15]" content-style="font-size: 12px">
@@ -60,26 +60,32 @@
         <transition appear enter-active-class="animated zoomIn">
           <q-btn-dropdown stretch flat color="white-8" icon="account_circle" @click="chat = false">
             <div class="row no-wrap q-pa-md">
-              <div class="column" style="width: 200px">
-                <div class="text-h6 q-mb-md">
+              <div class="column" style="width: 150px">
+                <div v-show="device === 0" class="text-h6 q-mb-md">
                   {{ $t('index.user_center') }}
                 </div>
-                  <q-btn flat rounded class="full-width" align="left" icon="connect_without_contact" :label="$t('index.change_user')" @click="login = true">
+                <div v-show="device === 1 || device === 2" style="width: 100%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
+                  <span style="margin-left: 9%;font-weight: bold">{{ $t('index.current_user') }}:</span>
+                  <span style="margin-left: 6%;font-weight: bold">{{login_name}}</span>
+                </div>
+                <hr v-show="device !== 0" style="height: 2px;border:none;border-top:1px solid #e1e1e1;width: 121%;margin-left: -10.5%; margin-top: 8%" />
+                <q-btn flat rounded class="full-width" align="left" :label="$t('index.change_user')" @click="login = true">
                       <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
                           {{ $t('index.change_user') }}
                       </q-tooltip>
                   </q-btn>
-                  <q-btn flat rounded class="full-width" align="left" icon="list" :label="$t('index.view_my_openid')" @click="authid = true">
+                  <q-btn flat rounded class="full-width" align="left" :label="$t('index.view_my_openid')" @click="authid = true">
                       <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
                           {{ $t('index.view_my_openid') }}
                       </q-tooltip>
                   </q-btn>
-                  <q-btn v-show="device !== 2" flat rounded class="full-width" align="left" icon="img:statics/icons/profile.png" :label="$t('index.contact_list')" @click="Friend()">
+                  <q-btn v-show="device !== 2" flat rounded class="full-width" align="left" :label="$t('index.contact_list')" @click="Friend()">
                       <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
                           {{ $t('index.contact_list') }}
                       </q-tooltip>
                   </q-btn>
-                  <q-btn v-show="$q.platform.is.cordova || $q.platform.is.mobile" flat rounded class="full-width" align="left" icon="logout" :label="$t('index.logout')" @click="Logout()">
+                <hr v-show="device !== 0" style="height: 2px;border:none;border-top:1px solid #e1e1e1;width: 121%;margin-left: -10.5%; margin-top: 8%" />
+                  <q-btn v-show="$q.platform.is.cordova || $q.platform.is.mobile" flat rounded class="full-width" align="left" :label="$t('index.logout')" @click="Logout()">
                       <q-tooltip content-class="bg-amber text-black shadow-4" :offset="[10, 10]" content-style="font-size: 12px">
                           {{ $t('index.contact_list') }}
                       </q-tooltip>
@@ -743,7 +749,7 @@
   </q-layout>
 </template>
 <script>
-import { versioncheck, getauth, post, wsurl } from 'boot/axios_request'
+import { versioncheck, getauth, post, wsurl,baseurl } from 'boot/axios_request'
 import { date, LocalStorage, openURL } from 'quasar'
 import Vconsole from 'vconsole'
 if (process.env.NODE_ENV !== 'production') {
@@ -935,6 +941,7 @@ export default {
           })
         }
       }
+      _this.$router.replace('/')
     },
     Logout () {
       var _this = this
@@ -948,7 +955,7 @@ export default {
         color: 'negative'
       })
       _this.staffType()
-      window.location.reload()
+      _this.$router.replace('/')
     },
     Register () {
       var _this = this

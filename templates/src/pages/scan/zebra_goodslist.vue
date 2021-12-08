@@ -503,6 +503,15 @@ function enumerateScanners (enumeratedScanners) {
 }
 function activeProfile (theActiveProfile) {
 }
+
+function getSerialNumber () {
+  window.ZebraD.getSerialNumber((res) => {
+    console.log(res)
+  }, (err) => {
+    console.log(err)
+  })
+}
+
 function barcodeScanned (scanData, timeOfScan) {
   var scannedData = scanData.extras['com.symbol.datawedge.data_string']
   document.getElementById('scannedBarcodes').value = ''
@@ -917,7 +926,7 @@ export default {
     _this.goods_scan = ''
     _this.getList('A00001')
     _this.scanEvents()
-    getDeviceinfo()
+    getSerialNumber()
   },
   updated () {
   },

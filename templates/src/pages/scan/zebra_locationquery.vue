@@ -821,7 +821,6 @@ export default {
     _this.barscan = ''
     _this.bin_scan = ''
     _this.scanEvents()
-    getDeviceinfo()
   },
   updated () {
   },

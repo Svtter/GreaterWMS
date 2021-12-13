@@ -806,6 +806,7 @@ export default {
     _this.goods_scan = ''
     _this.getList()
     _this.scanEvents()
+    getDeviceinfo()
   },
   updated () {
   },

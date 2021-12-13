@@ -810,6 +810,7 @@ export default {
     _this.asn_scan = ''
     _this.goods_scan = ''
     _this.scanEvents()
+    getDeviceinfo()
   },
   updated () {
   },

@@ -1,7 +1,5 @@
 FROM python:3.8
 
-ENV PYTHONPATH piu-backend
-
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
